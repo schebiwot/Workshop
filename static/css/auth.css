@@ -1,0 +1,44 @@
+body {
+  margin: 0;
+  padding: 0;
+   background-image: url("../images/hero.jpg");
+  height: 100vh;
+    backdrop-filter: opacity(33%);
+    background-size: cover;
+}
+#auth .container #auth-row #auth-column #login-box {
+  margin-top: 120px;
+  max-width: 600px;
+  border: 1px solid #9C9C9C;
+  background-color: #f5f3f3;
+}
+#auth .container  #signup-box{
+margin-top: 120px;
+  max-width: 600px;
+  height: 500px;
+  border: 1px solid #9C9C9C;
+  background-color: #f5f3f3;
+
+}
+#auth #auth-column{
+  min-height: 500px;
+}
+.text-info text-center {
+    color: #ffffff !important;
+}
+#auth .container #auth-row #auth-column #login-box #signup-box #auth-form {
+  padding: 20px;
+    color:white;
+    }
+#auth .container #auth-row #auth-column #login-box #auth-form #signup-box #register-link {
+  margin-top: -85px;
+}
+
+.background{
+    background-image: url("../images/hero.jpg");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    background-color: #464646;
+}

@@ -1,0 +1,107 @@
+
+.background {
+    background-image: url("../images/chev.jpg");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    background-color: #464646;
+}
+
+.background .heading {
+    color: #e9ecef;
+    text-align: center;
+    padding-top: 10px;
+}
+
+
+.background p {
+    text-align: center;
+    padding: 20px 60px;
+}
+
+.background p .btn {
+    background-color: transparent;
+    color: #ae3f15;
+    border: 1px solid #ae3f15;
+    padding: 5px;
+    font-size: 1.2em;
+}
+
+.background p .btn:hover {
+    color: #0A1B1B;
+    border-color: #C57ED3;
+}
+
+.footer-container a {
+    color: #808080;
+
+}
+.navbar {
+    background-color: transparent;
+    border: none;
+    color: #090971;
+    z-index: 100;
+    transition: background-color 1s ease 0s;
+}
+
+
+.navbar-toggler-icon {
+    background-color: #d4ebeb;
+}
+
+
+.navbar-default .navbar-brand {
+    margin-top: 10px;
+    color: grey;
+}
+
+.navbar-light .navbar-nav .nav-link {
+    color: #ffffff;
+}
+
+.navbar.solid {
+    background-color: #490d40;
+    transition: background-color 1s ease 0s;
+    box-shadow: 0 0 4px grey;
+}
+
+.navbar.solid .navbar-brand {
+    color: #c57ed3;
+    transition: color 1s ease 0s;
+}
+
+.navbar.solid .navbar-nav > li > a {
+    color: #c57ed3;
+    transition: color 1s ease 0s;
+}
+
+.form {
+padding:30px;
+margin:30px auto;
+}
+.space-items{
+    /*justify-content: space-around;*/
+    margin-bottom: 9px;
+}
+.space-form{
+    margin-right: 5px;
+}
+ .dynamic-form-input{
+    min-width: 250px;
+}
+[data-role="service-items"] > .form-inline + .forminline {
+    margin-top: 0.5em;
+}
+
+[data-role="service-items"] > .form-inline [data-role="add"] {
+    display: none;
+}
+
+[data-role="service-items"] > .form-inline:last-child [data-role="add"] {
+    display: inline-block;
+}
+
+[data-role="service-items"] > .form-inline:last-child [data-role="remove"] {
+    display: none;
+}

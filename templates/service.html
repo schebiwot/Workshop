@@ -1,0 +1,105 @@
+{% extends 'base.html' %}
+{% block body %}
+
+<div class="form">
+    <form action="{{ url_for('service') }}" method="post" enctype="multipart/form-data">
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <label for="">Select Vehicle</label>
+                    <select class="selectpicker form-control" required  data-live-search="true" id="vehicle"  name="vehicle">
+                <option selected></option>
+                               {% for vehicle in vehicles %}
+                            <option value="{{ vehicle.id }}">{{vehicle.registration}}</option>
+                           {% endfor %}
+                        </select>
+                </div>
+    <label class="control-label" for="field1">Add Service Items </label>
+            <div data-role="service-items">
+
+                <div class="form-inline space-items">
+                    <div class="form-group space-form">
+                        <label class="sr-only" for="parts">Parts</label>
+                        <select name="parts[]" id="parts" class="form-control dynamic-form-input" placeholder="select Service Parts" required>
+                        </select>
+                    </div>
+                    <div class="form-group space-form">
+                        <label class="sr-only" for="quantity">Quantity</label>
+                        <input type="number" class="form-control dynamic-form-input"  name= "quantities[]" placeholder="quantity" id= "quantity"  min="1" max="10" step="1"/>
+                    </div>
+                    <button class="btn btn-danger" data-role="remove">
+                        <i>-</i>
+                    </button>
+                    <button class="btn btn-primary" data-role="add">
+                        <i>+</i>
+                    </button>
+                </div>
+            </div>
+
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary" value="post entry">Save Assessment</button>
+                </div>
+            </div>
+            <div class="col-md-3"></div>
+        </div>
+
+    </form>
+</div>
+<script>
+    var parts=[]
+     $("#vehicle").change(function () {
+            const vehicle_no = $(this).val();
+            $.ajax(
+                {
+                    url: `/lookup-parts`,
+                    type: "GET",
+                    dataType: "json",
+                    data: {
+                        vehicle_no: vehicle_no,
+                    }
+                }).done(function (data) {
+                $("#parts").html("");
+                parts =data.parts[0]
+                 const selectedoption = document.createElement("option");
+                    selectedoption.selected = true;
+                    $("#parts").append(selectedoption);
+                for (let ndx = 0; ndx < parts.length; ndx++) {
+                    const item = parts[ndx];
+                    const option = document.createElement("option");
+                    option.value = item["part_no"];
+                    option.text = item["description"] +' - '+ item["part_no"];
+                    $("#parts").append(option);
+                }
+            });
+        });
+$(function() {
+    $(document).on(
+        'click',
+        '[data-role="service-items"] > .form-inline [data-role="remove"]',
+        function(e) {
+            e.preventDefault();
+            $(this).closest('.form-inline').remove();
+        }
+    );
+
+    $(document).on(
+        'click',
+        '[data-role="service-items"] > .form-inline [data-role="add"]',
+        function(e) {
+            e.preventDefault();
+            if (parts.length>0){
+            const container = $(this).closest('[data-role="service-items"]');
+            const new_field_group = container.children().filter('.form-inline:first-child').clone();
+            new_field_group.find('input').each(function(){
+                $(this).val('');
+            });
+            container.append(new_field_group);
+            } else {
+                alert('Select Vehicle First')
+            }
+        }
+    );
+});
+</script>
+{% endblock body %}

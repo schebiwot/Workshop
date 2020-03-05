@@ -1,0 +1,99 @@
+{% extends 'base.html' %}
+{% block body %}
+
+<div class="form">
+    <form action="{{ url_for('new_entry') }}" method="post" enctype="multipart/form-data">
+        <div class="container">
+            <div class="row">
+                <form role="form">
+                    <div class="form-group col-xs-10 col-sm-6 col-md-6 col-lg-6">
+                        <label for="">Driver Name</label>
+                        <input type="text" name="drivername" class="form-control" placeholder="Enter Driver's Name"
+                               required>
+                    </div>
+                    <div class="form-group col-xs-10 col-sm-6 col-md-6 col-lg-6">
+                        <label for="">Driver's Phone Number</label>
+                        <input type="text" name="driverphone" class="form-control"
+                               placeholder="Enter Driver's Phone Number"
+                               required>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="form-group col-xs-10 col-sm-6 col-md-6 col-lg-6">
+                        <label for=""> Company Name</label>
+                        <input type="text" name="companyname" class="form-control" placeholder="Enter Company Name"
+                               required>
+                    </div>
+                    <div class="form-group col-xs-10 col-sm-6 col-md-6 col-lg-6">
+                        <label for="">Owner's Name</label>
+                        <input type="text" name="ownername" class="form-control" placeholder="Enter Owner's Name"
+                               required>
+                    </div>
+
+                    <div class="clearfix"></div>
+                    <div class="form-group col-xs-10 col-sm-6 col-md-6 col-lg-6">
+                        <label for="">Owner's Email</label>
+                        <input type="email" name="owneremail" class="form-control" placeholder="Enter Owner's Email"
+                               required>
+                    </div>
+                    <div class="form-group col-xs-10 col-sm-6 col-md-6 col-lg-6">
+                        <label for="truckmodel">Truck's Model</label>
+                         <select class="selectpicker form-control" required  data-live-search="true" id="truckmodel"  name="truckmodel">
+                <option selected></option>
+                               {% for model in models %}
+                            <option value="{{ model.model_no }}">{{model.model_no}}</option>
+                           {% endfor %}
+                        </select>
+                    </div>
+
+                    <div class="clearfix"></div>
+                    <div class="form-group col-xs-10 col-sm-6 col-md-6 col-lg-6">
+                        <label for="">Registration Number</label>
+                        <input type="text" name="registrationnumber" class="form-control"
+                               placeholder="Enter Registration Number" required>
+                    </div>
+                    <div class="form-group col-xs-10 col-sm-6 col-md-6 col-lg-6">
+                        <label for="">Chassis Number</label>
+                        <input type="text" name="chassisnumber" class="form-control" placeholder="Enter Chasis Number"
+                               required>
+                    </div>
+
+                    <div class="clearfix"></div>
+                    <div class="form-group col-xs-10 col-sm-6 col-md-6 col-lg-6">
+                        <label for="">Engine Number</label>
+                        <input type="text" name="enginenumber" class="form-control" placeholder="Enter Engine Number"
+                               required>
+                    </div>
+                    <div class="form-group col-xs-10 col-sm-6 col-md-6 col-lg-6">
+                        <label for="">Car Mileage</label>
+                        <input type="text" name="carmileage" class="form-control" placeholder="Enter Mileage" required>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="form-group col-xs-10 col-sm-6 col-md-6 col-lg-6">
+                        <label for="">Receiving Technician</label>
+                         <select class="form-control" required  data-live-search="true" id="technician"  name="technician">
+                <option selected></option>
+                               {% for user in users %}
+                            <option value="{{ user.id }}">{{user.name}}</option>
+                           {% endfor %}
+                        </select>
+                    </div>
+
+                    <div class="form-group col-xs-10 col-sm-6 col-md-6 col-lg-6">
+
+                    </div>
+
+                    <div class="clearfix"></div>
+
+                    <button type="submit" style="width: 300px; margin: 0 auto;" class="btnRegister">Submit</button>
+
+                </form>
+                <div class="clearfix"></div>
+
+                <br/><br/>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+{% endblock body %}
