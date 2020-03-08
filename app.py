@@ -23,7 +23,6 @@ app.config['MAIL_PASSWORD'] = 'f651cea5353f8c'
 app.config['MAIL_USE_TLS'] = True
 app.config['MAIL_USE_SSL'] = False
 app.config['MAIL_DEBUG'] = True
-# IF APP IS IN TESTING MODE,IT WONT SEND EMAILS TO RECEIPIENTS
 app.config['MAIL_SUPPRESS_SENDER'] = False
 app.config['MAIL_ASCII_ATTACHMENTS'] = False
 
@@ -152,10 +151,14 @@ def signup():
         email = request.form.get('email')
         username = request.form.get('username')
         password = request.form.get('password')
+
         passwordHash = generate_password_hash(password)
+
         user = User(name=name, username=username, email=email, password=passwordHash)
+
         db.session.add(user)
         db.session.commit()
+
         return redirect(url_for('login'))
     return render_template('signup.html', title="SignUp")
 

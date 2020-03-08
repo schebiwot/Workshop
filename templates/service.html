@@ -60,7 +60,7 @@
                     }
                 }).done(function (data) {
                 $("#parts").html("");
-                parts =data.parts[0]
+                parts =data.parts
                  const selectedoption = document.createElement("option");
                     selectedoption.selected = true;
                     $("#parts").append(selectedoption);
